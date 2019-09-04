@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="MemberDAO.java|com/Member/MemberDAO.java|com/Member/MemberDTO.java" kind="src" path="src/main/java"/>
+	<classpathentry excluding="MemberDAO.java" kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>

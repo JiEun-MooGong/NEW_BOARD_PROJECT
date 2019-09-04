@@ -35,6 +35,7 @@
 		//dao
 		MemberDAO dao = MemberDAO.getMemberDAO();
 		ArrayList<MemberDTO> list = dao.Select();
+		out.println("list");
 		for(MemberDTO dto : list)
 		{
 			out.println("<tr>");
