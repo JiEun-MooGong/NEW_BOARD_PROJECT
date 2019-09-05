@@ -35,7 +35,6 @@
 		//dao
 		MemberDAO dao = MemberDAO.getMemberDAO();
 		ArrayList<MemberDTO> list = dao.Select();
-		out.println("list");
 		for(MemberDTO dto : list)
 		{
 			out.println("<tr>");
@@ -59,10 +58,10 @@
 		//}
 		
 	}
-	catch (Exception e)
+	catch (Exception ex)
 	{
-		out.println("에러 : " + e.getMessage() );
-		e.printStackTrace();
+		out.println("에러 : " + ex.getMessage() );
+		ex.printStackTrace();
 	}
 %>
 <body>

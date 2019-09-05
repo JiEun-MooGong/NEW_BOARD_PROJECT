@@ -11,7 +11,8 @@ public class MemberDAO
 	private String upw = "board";
 	
 	private Connection conn = null;
-	private PreparedStatement pstmt = null;
+	//private PreparedStatement pstmt = null;
+	private Statement stmt = null;
 	private ResultSet rs = null;
 	
 	// 싱글톤패턴 ?
@@ -49,26 +50,21 @@ public class MemberDAO
 	public ArrayList<MemberDTO> Select()
 	{
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
-		
+				
 		try
 		{
-			String strSql = "SELETE * FROM BOARD_USER";
+			String strSql = "SELECT * FROM BOARD_USER";
 			
 			conn = getConnection();
-			pstmt = conn.prepareStatement(strSql);
-			rs = pstmt.executeQuery();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(strSql);
 			
 			while(rs.next())
 			{	
 				// ↓ dto클래스에서  set 메소드 생성 후, dto 선언 이후 이렇게 사용 가능. 
 				//dto.setId(rs.getString("ID"));
 				
-				String name = rs.getString("NAME");
-				String id = rs.getString("USER_ID");
-				String pw = rs.getString("PASSWORD");
-				String email = rs.getString("EMAIL");
-				
-				MemberDTO dto = new MemberDTO(name,id,pw,email);
+				MemberDTO dto = new MemberDTO(rs.getString("NAME"),rs.getString("USER_ID"),rs.getString("PASSWORD"),rs.getString("EMAIL"));
 				list.add(dto);				
 			}
 		}
@@ -79,9 +75,10 @@ public class MemberDAO
 		finally
 		{
 			try {rs.close();}catch(SQLException sqlEx) {}
-			try {pstmt.close();}catch(SQLException sqlEx) {}
+			try {stmt.close();}catch(SQLException sqlEx) {}
 			try {conn.close();}catch(SQLException sqlEx) {}
 		}
+		
 		return list;
 	}
 	
