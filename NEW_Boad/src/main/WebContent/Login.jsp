@@ -34,28 +34,31 @@
 		
 		//dao
 		MemberDAO dao = MemberDAO.getMemberDAO();
-		ArrayList<MemberDTO> list = dao.Select();
-		for(MemberDTO dto : list)
-		{
-			out.println("<tr>");
-			out.println("<td>" + dto.getId() + "</td>");
-			out.println("<td>" + dto.getPw() + "</td>");
-			out.println("<td>" + dto.getName() + "</td>");
-			out.println("<td>" + dto.getEmail() + "</td>");
-			out.println("</tr>");
-		}
 		
-		//if(strName == "" || strName==null)
-		//{ 
-			//out.println("사용자 정보가 없습니다.<hr>");
-		  	//out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
-		//}	
-		//else
+		//ArrayList<MemberDTO> list = dao.Select();
+		//for(MemberDTO dto : list)
 		//{
-			//out.println(strName + "님 환영합니다.<hr>");
-			//session.setAttribute("userid",strId);
-			//response.sendRedirect("list.jsp");
+			//out.println("<tr>");
+			//out.println("<td>" + dto.getId() + "</td>");
+			//out.println("<td>" + dto.getPw() + "</td>");
+			//out.println("<td>" + dto.getName() + "</td>");
+			//out.println("<td>" + dto.getEmail() + "</td>");
+			//out.println("</tr>");
 		//}
+		
+		strName = dao.CheckId(strId, strPass);
+		
+		if(strName == "" || strName==null)
+		{ 
+			out.println("사용자 정보가 없습니다.<hr>");
+		  	out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
+		}	
+		else
+		{
+			session.setAttribute("userid",strId);
+			out.println(strName + "님 환영합니다.<hr>");
+			//response.sendRedirect("list.jsp");
+		}
 		
 	}
 	catch (Exception ex)

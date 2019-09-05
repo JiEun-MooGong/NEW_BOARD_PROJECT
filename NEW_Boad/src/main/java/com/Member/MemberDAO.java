@@ -1,6 +1,8 @@
 package com.Member;
 
 import java.sql.*;
+import javax.sql.*;
+import javax.naming.*;
 import java.util.ArrayList;
 
 public class MemberDAO 
@@ -80,6 +82,37 @@ public class MemberDAO
 		}
 		
 		return list;
+	}
+	
+	public String CheckId(String p_Id, String p_Pw)
+	{
+		String strName = "";
+		
+		try
+		{
+			String strSql = "SELECT * FROM BOARD_USER WHERE PASSWORD = '" + p_Pw +"' AND USER_ID = '" + p_Id + "'" ;
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(strSql);
+			
+			while(rs.next())
+			{	
+				strName = rs.getString("NAME");
+			}
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}	
+		finally
+		{
+			try {rs.close();}catch(SQLException sqlEx) {}
+			try {stmt.close();}catch(SQLException sqlEx) {}
+			try {conn.close();}catch(SQLException sqlEx) {}
+		}
+		
+		return strName;
 	}
 	
 
