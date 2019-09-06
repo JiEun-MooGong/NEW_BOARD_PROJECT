@@ -9,22 +9,21 @@
 		<h2> 로그인 </h2>
 		<br>
 		<form action="Login.jsp" method="post">
-		<table>
-        <thead></thead>
-        <tbody>
-          <tr>
-            <th> ID </th>
-            <td> <input type="text" id="txtUserId" placeholder="USER ID" name="ID" /> </td>
-          </tr>
-          <tr>
-            <th> PASSWORD </th>
-            <td> <input type="password" id="txtUserPass" placeholder="PASSWORD" name="PASSWORD" /> </td>
-          </tr>
-        </tbody>
-      	</table>
-		<input type="submit" value="로그인" id="loginSubmit" name="loginSubmit"/>
+		<div class="box_login">
+			<div class="inp_text">
+				<label for = "txtUserId">ID</label>
+				<input type="text" id="txtUserId" placeholder="USER ID" name="ID" />
+			</div>
+			<div class="inp_text">
+				<label for = "txtUserPass">PASSWORD</label>
+				<input type="password" id="txtUserPass" placeholder="PASSWORD" name="PASSWORD" />
+			</div>
+		</div>
+		<input type="submit" class = "bun_login" value="로그인" id="loginSubmit" name="loginSubmit"/>
+		<div>
+		<input type="button" value="회원가입" onClick="location.href='Sign.html'">
+		</div>
 		</form>
-		<a href="Sign.html"> 회원가입 </a>
 	</div>
 </body>
 </html>

@@ -84,6 +84,9 @@ public class MemberDAO
 		return list;
 	}
 	
+	//======================================
+	// 로그인시 아이디 체크
+	//======================================
 	public String CheckId(String p_Id, String p_Pw)
 	{
 		String strName = "";
@@ -115,5 +118,35 @@ public class MemberDAO
 		return strName;
 	}
 	
+	//======================================
+	// 회원가입 
+	//======================================
+	public boolean Insert_User(MemberDTO dto)
+	{	
+		try
+		{	
+			String strSql = "";
+			strSql += "INSERT INTO BOARD_USER";
+			strSql += "(USER_ID, PASSWORD, NAME, EMAIL)";
+			strSql += "VALUES('"+ dto.getId() + "', '" + dto.getPw() +"','" + dto.getName() + "','" + dto.getEmail() + "')";
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(strSql);
+			
+			return true;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}	
+		finally
+		{
+			try {rs.close();}catch(SQLException sqlEx) {}
+			try {stmt.close();}catch(SQLException sqlEx) {}
+			try {conn.close();}catch(SQLException sqlEx) {}
+		}
+	}	
 
 } //class

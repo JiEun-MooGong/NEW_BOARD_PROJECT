@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> :: 게시판 회원가입 :: </title>
+<meta charset="utf-8">
+</head>
+<body>
+	<div align="center">
+		<h2> 회원가입 </h2><br>
+		<form action="Sign.jsp" method="post">
+	      <table>
+	        <thead>
+	        </thead>
+	        <tbody>
+	          <tr>
+	            <th> ID </th>
+	            <td> <input type="text" id="txtUserId" placeholder="USER ID" name="ID" /> </td>
+	          </tr>
+	          <tr>
+	            <th> PASSWORD </th>
+	            <td> <input type="password" id="txtPass" placeholder="PASSWORD" name="PASSWORD" /> </td>
+	          </tr>
+	          <tr>
+	            <th> 이름 </th>
+	            <td> <input type="text" id="txtName" name="NAME" /> </td>
+	          </tr>
+	          <tr>
+	            <th> E-mail </th>
+	            <td> <input type="text" id="txtEmail" name="EMAIL" /> </td>
+	          </tr>
+	        </tbody>
+	      </table>
+	      <br>
+			<button type="submit">확인</button>
+			<input type="button" value="BACK" onClick="history.go(-1)">
+	    </form>
+     </div>
+  </body>
+</html>

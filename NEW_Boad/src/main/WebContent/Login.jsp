@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.Member.MemberDAO" %>
 <%@ page import="com.Member.MemberDTO" %>
+<%@ page import="com.Member.TotClass" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,8 @@
 		String strId =  request.getParameter("ID");
 		String strPass = request.getParameter("PASSWORD");
 		String strName = "";
+		
+		strId = TotClass.getEscapedString(strId);
 		
 		//유효성 검사
 		if(strId==""||strId==null)
@@ -52,10 +55,12 @@
 		{ 
 			out.println("사용자 정보가 없습니다.<hr>");
 		  	out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
+		  	
 		}	
 		else
 		{
 			session.setAttribute("userid",strId);
+			session.setAttribute("username",strName);
 			out.println(strName + "님 환영합니다.<hr>");
 			//response.sendRedirect("list.jsp");
 		}
